@@ -8,7 +8,23 @@ A multi-source geospatial ETL pipeline that ingests, cleans, geocodes, and store
 
 The pipeline pulls data from three government sources, resolves inconsistencies across them, geocodes thousands of energy facilities, and loads everything into a star-schema relational database ready for downstream analysis.
 
-**Data Sources**
+## Pipeline
+
+```mermaid
+flowchart TD
+    A[NGER\nGov REST API] --> D[Data Acquisition]
+    B[LGCS\nGov REST API] --> D
+    C[ECON\nABS Excel] --> D
+    D --> E[Cleaning & Validation\ncolumn harmonisation · outlier flagging · ASGS classification]
+    E --> F[Geocoding\nOpenStreetMap primary · Google Maps fallback]
+    F --> G[Fuzzy Name Matching\nthefuzz · rapidfuzz]
+    G --> H[(Neon PostgreSQL + PostGIS)]
+    H --> I[Star Schema\nfact_nger · fact_econ · dim_facility · geo_regions]
+```
+
+---
+
+## Data Sources
 - **NGER** (National Greenhouse and Energy Reporting) — facility-level emissions and electricity production, 2014–2023, via Australian Government REST API
 - **LGCS** (Large-scale Generation Certificate Scheme) — accredited renewable power stations, via REST API
 - **ECON** (ABS Economic Census) — regional business activity data, via ABS Excel files
