@@ -1,6 +1,6 @@
-# Australian Energy ETL Pipeline
+# Australian Energy Data Platform — Batch ETL Pipeline
 
-> **Part 1 of the Australian Energy Data Platform** — the batch foundation.
+> **Part 1 of the Australian Energy Data Platform (Batch + Streaming)** — the batch foundation.
 > ➊ Batch ETL (this repo) → **Neon PostgreSQL + PostGIS** → [➋ Real-time streaming dashboard](../energy-streaming-dashboard)
 >
 > This pipeline builds the geospatial serving layer (`dim_facility`, `geo_regions`) that the streaming dashboard consumes for live map enrichment.
