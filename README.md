@@ -1,7 +1,7 @@
 # Australian Energy Data Platform — Batch ETL Pipeline
 
 > **Part 1 of the Australian Energy Data Platform (Batch + Streaming)** — the batch foundation.
-> ➊ Batch ETL (this repo) → **Neon PostgreSQL + PostGIS** → [➋ Real-time streaming dashboard](../energy-streaming-dashboard)
+> ➊ Batch ETL (this repo) → **Neon PostgreSQL + PostGIS** → [➋ Real-time streaming dashboard](https://github.com/chingyu13/energy-data-platform-streaming)
 >
 > This pipeline builds the geospatial serving layer (`dim_facility`, `geo_regions`) that the streaming dashboard consumes for live map enrichment.
 
@@ -119,4 +119,4 @@ Then run `energy-etl-pipeline.ipynb` top to bottom. Geocoding results are cached
 
 ## Related — Part 2 of the Platform
 
-The **[Real-Time Energy Streaming Dashboard](../energy-streaming-dashboard)** is the downstream consumer of this pipeline: it queries the `dim_facility` and `geo_regions` tables built here to enrich a live MQTT stream of NEM market data on an interactive map. Together they form a batch-to-streaming data platform — this repo is the batch serving layer; the dashboard is the real-time layer.
+The **[Real-Time Energy Streaming Dashboard](https://github.com/chingyu13/energy-data-platform-streaming)** is the downstream consumer of this pipeline: it queries the `dim_facility` and `geo_regions` tables built here to enrich a live MQTT stream of NEM market data on an interactive map. Together they form a batch-to-streaming data platform — this repo is the batch serving layer; the dashboard is the real-time layer.
