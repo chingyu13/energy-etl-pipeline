@@ -1,7 +1,7 @@
 # Australian Energy ETL Pipeline
 
 > **Part 1 of the Australian Energy Data Platform** — the batch foundation.
-> `➊ Batch ETL (this repo)` → **Neon PostgreSQL + PostGIS** → `[➋ Real-time streaming dashboard](../energy-streaming-dashboard)`
+> ➊ Batch ETL (this repo) → **Neon PostgreSQL + PostGIS** → [➋ Real-time streaming dashboard](../energy-streaming-dashboard)
 >
 > This pipeline builds the geospatial serving layer (`dim_facility`, `geo_regions`) that the streaming dashboard consumes for live map enrichment.
 
@@ -35,7 +35,7 @@ flowchart TD
 
 Spatial overview from **Section 3-7** of `energy-etl-pipeline.ipynb` — validates geocoded facility locations against ECON regional data after the ETL load:
 
-Australian Electricity Sector — Spatial Overview
+![Australian Electricity Sector — Spatial Overview](./assets/spatial-overview.png)
 
 *Left: 1,108 NGER facilities and 38 LGCS solar stations geocoded via OpenStreetMap + Google Maps fallback. Right: total businesses by SA2 region (choropleth, 5th–95th percentile scale) joined from `geo_regions` and `fact_econ`.*
 
@@ -59,7 +59,7 @@ Australian Electricity Sector — Spatial Overview
 
 **4 · Database Load** — writes to a Neon cloud PostgreSQL instance with PostGIS enabled. Schema follows a star/snowflake model with two fact tables (`fact_nger`, `fact_econ`), shared dimensions (`dim_year`, `dim_fuel`), and a central geographic dimension (`geo_regions`) linking facilities, power stations, and regional economic indicators:
 
-Star schema design with PostGIS spatial columns
+![Star schema design with PostGIS spatial columns](./assets/schema-design.png)
 
 Key design choices:
 
